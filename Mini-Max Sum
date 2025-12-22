@@ -1,0 +1,50 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'miniMaxSum' function below.
+#
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+
+def miniMaxSum(arr):
+    # Write your code here
+    new_arr = [0] * len(arr); #Create new array of size 4
+    
+    sum = 0 #Assign 0 to sum
+    
+    min = arr[0] + arr[1] + arr[2] + arr[3]; #Default value of min is the sum of first 4 elements of arr
+    max = arr[0] + arr[1] + arr[2] + arr[3]; #Default value of max is the sum of first 4 elements of arr
+    
+    for i in range(0, len(arr)): #Loop through arr elements
+        sum = 0 #Assign 0 to sum
+        index = 0 #Assign 0 to index
+        
+        for j in range(0, len(arr)): #Loop through arr elements
+            
+            if j != i: #If j is not equal to i
+                new_arr[index] = arr[j] #Set arr element at index j to new_arr at index 'index'
+                index += 1 #Increment index by 1
+                
+        for k in range(0, len(new_arr)): #Loop through new_arr elements
+            sum += new_arr[k] #Add new_arr elements to sum
+                
+        if sum < min: #If sum is less than min
+            min = sum #Assign sum to min
+            
+        elif sum > max: #Else if sum is greater than max
+            max = sum #Assign sum to max
+            
+    print(min, max)   #Print min and max
+        
+
+if __name__ == '__main__':
+
+    arr = list(map(int, input().rstrip().split()))
+
+    miniMaxSum(arr)
