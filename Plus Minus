@@ -1,0 +1,43 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'plusMinus' function below.
+#
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+
+def plusMinus(arr):
+    # Write your code here
+    num_positive = 0 #Assign 0 to num_positive
+    num_negative = 0 #Assign 0 to num_negative
+    num_zeros = 0 #Assign 0 to num_zeros
+    
+    for i in arr: #Iterate through all elements of arr
+        if i > 0: #If i is greater than 0
+        
+            num_positive += 1 #Increment num_positive by 1
+            
+        elif i < 0: #If i is less than 0
+        
+            num_negative += 1 #Increment num_negative by 1
+            
+        elif i == 0: #If i is equal to 0
+        
+            num_zeros += 1 #Increment num_zeros by 1
+            
+    print(num_positive / len(arr)) #Print the division of num_positive divided by the length of arr
+    print(num_negative / len(arr)) #Print the division of num_negative divided by the length of arr
+    print(num_zeros / len(arr)) #Print the division of num_zeros divided by the length of arr
+
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    plusMinus(arr)
