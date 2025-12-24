@@ -1,0 +1,46 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'birthdayCakeCandles' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY candles as parameter.
+#
+
+def birthdayCakeCandles(candles):
+    # Write your code here
+    tall_candle = 0 #Assign 0 to tall_candle
+    num_tall = 0 #Assign 0 to num_tall
+    
+    for i in candles: #Iterate through elements in candles
+        if i < tall_candle: #If i is less than tall_candle
+            continue #Go to next iteration
+        elif i > tall_candle: #If i is greater than tall_candle
+            tall_candle = i #Assign i to tall_candle
+        else: #Else statement
+            continue #Go to next iteration
+            
+    for i in candles: #Iterate through elements in candles
+        if i == tall_candle: #If i is equal to tall_candle
+            num_tall += 1 #Increment 1 to num_tall
+            
+    return num_tall #Return num_tall
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    candles_count = int(input().strip())
+
+    candles = list(map(int, input().rstrip().split()))
+
+    result = birthdayCakeCandles(candles)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
