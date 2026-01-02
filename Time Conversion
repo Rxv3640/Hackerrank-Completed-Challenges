@@ -1,0 +1,41 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'timeConversion' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts STRING s as parameter.
+#
+
+def timeConversion(s):
+    # Write your code here
+    
+    if s[0:2] == '12' and s[8:10] == 'PM': #If hour is 12 and the time is PM
+        return '12:' + s[2:8] #Return hour 12 and the minutes and seconds of the 12-hour time
+        
+    elif s[0:2] == '12' and s[8:10] == 'AM': #If hour is 12 and the time is AM
+        return '00:' + s[2:8] #Return hour 00 and the minutes and seconds of the 12-hour time
+        
+    else: #Else statement
+        hh = int(s[0:2]) #Store hour from 12 hour time to hh
+        
+        hh = hh + 12 #Add 12 to hh and store value
+        
+        return str(hh) + s[2:8] #Return hh and the minutes and seconds of the 12-hour time
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = timeConversion(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
