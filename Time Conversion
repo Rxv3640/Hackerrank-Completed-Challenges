@@ -25,9 +25,14 @@ def timeConversion(s):
     else: #Else statement
         hh = int(s[0:2]) #Store hour from 12 hour time to hh
         
-        hh = hh + 12 #Add 12 to hh and store value
+        if s[8:10] == 'PM':  
+            hh = hh + 12 #Add 12 to hh and store value
         
-        return str(hh) + s[2:8] #Return hh and the minutes and seconds of the 12-hour time
+            return str(hh) + s[2:8] #Return hh and the minutes and seconds of the 12-hour time
+            
+        else: #Else statement
+        
+            return '0' + str(hh) + s[2:8] #Return hh and the minutes and seconds of the 12-hour time
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
